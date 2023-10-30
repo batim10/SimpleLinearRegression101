@@ -1,7 +1,7 @@
 #This function helps user decide if their data is appropriate for simple linear regression
 #If appropriate will return location of data
 
-intro(){
+intro = function(){
   print("There are multiple types of data that can be collected when looking for
   correlation and when building predictive and explanatory models. Here are the
   most common types:
