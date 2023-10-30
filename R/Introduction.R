@@ -1,3 +1,6 @@
+#This function helps user decide if their data is appropriate for simple linear regression
+#If appropriate will return location of data
+
 intro(){
   print("There are multiple types of data that can be collected when looking for
   correlation and when building predictive and explanatory models. Here are the
@@ -34,11 +37,13 @@ intro(){
   stop("Invalid Reponse")
   }
 
-  response2 = readline("Is your data arranged in a two column table?
+  response2 = readline("Does your data represent a single explanatory variable
+                        and a single response variable in an appropriate format
+                        (csv, text,xlxs)?
                        Answer Y or N: ")
 
   if (response2 == "N"){
-    stop("Format your data so that response variable data in one column of a
+    stop("Format data so that response variable data in one column of a
          table and the explanatory variable  data is in the other column ")
   } else if (response == "Y"){
     response3 = readline("Enter path to location of your data file")
