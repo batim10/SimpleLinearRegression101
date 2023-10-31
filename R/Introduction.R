@@ -21,7 +21,7 @@ intro = function(){
   Continuous:  Numerical data that can take only any value within a given range.
   Examples: Height, weight,time"
   )
-  response = readline("Is your data continuous? Answer Y or N: ")
+  response = readline(prompt = "Is your data continuous? Answer Y or N: ")
 
   if (response == "N"){
     stop("Simple linear regression is not the best method to analyze your data.")
@@ -37,7 +37,7 @@ intro = function(){
   stop("Invalid Reponse")
   }
 
-  response2 = readline("Does your data represent a single explanatory variable
+  response2 = readline(prompt = "Does your data represent a single explanatory variable
                         and a single response variable in an appropriate format
                         (csv, text,xlxs)?
                        Answer Y or N: ")
@@ -46,7 +46,7 @@ intro = function(){
     stop("Format data so that response variable data in one column of a
          table and the explanatory variable  data is in the other column ")
   } else if (response == "Y"){
-    response3 = readline("Enter path to location of your data file")
+    response3 = readline(prompt = "Enter path to location of your data file")
     return(reponse3)
   } else {
     stop("Invalid Response")
