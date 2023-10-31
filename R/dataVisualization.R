@@ -32,12 +32,12 @@ Visual <- function(table, p = 19, c = "blue" ){
   lines(density(y), col = "blueviolet")
   boxplot(y)
 
+  par(mfrow = c(1,1))
 
   plot(x, y, pch = p, color = c, xlab = x_lab, ylab = y_lab, main = "Scatterplot")
   lmout <- lm(y~x)
   abline(lmout)
 
-  dev.off() #Closes pdf
 
   par(mfrow = c(1,3))
 
@@ -53,4 +53,13 @@ Visual <- function(table, p = 19, c = "blue" ){
 
   hist(beta, freq = FALSE, main = "Histogram Left Skewed Data")
   lines(density(y), col = "hotpink")
+
+  qqnorm(x, main = paste("Normal Q-Q Plot", x_lab))
+
+  qqnorm(y, main = paste("Normal Q-Q Plot", y_lab))
+
+  print("Shaprio test for normality. P value < 0.05 suggest that data is not normally distributed")
+
+  shaprio.test(x)
+  shapiro.test(y)
 }
