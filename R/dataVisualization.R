@@ -8,8 +8,8 @@ Visual <- function(table, p = 19, c = "blue" ){
   if (response == 1){
     y <- table[,1]
     x <- table[,2]
-    x_lab <- colnames(table)[2]
-    y_lab <- colnames(table)[1]
+    x_lab <- colnames(table)[2]#use header title for x labels
+    y_lab <- colnames(table)[1]#use header title for y lavels
   } else if (response == 2){
     y <- table[,2]
     x <- table[,1]
@@ -22,6 +22,7 @@ Visual <- function(table, p = 19, c = "blue" ){
 
   par(mfrow = c(1,3)) #Output graphs with 3 graphs per page
 
+  #Jitter spaces out data points with same value
   stripchart(x, method = "jitter", pch = p, col = c, main = paste("Dot plot",x_lab))
   hist(x, freq = FALSE, main = c("Histogram",x_lab))
   lines(density(x), col = "blueviolet")
@@ -53,6 +54,8 @@ Visual <- function(table, p = 19, c = "blue" ){
 
   hist(beta, freq = FALSE, main = "Histogram Left Skewed Data")
   lines(density(y), col = "hotpink")
+
+  #create normal qq plots to assesss if normal distribution
 
   qqnorm(x, main = paste("Normal Q-Q Plot", x_lab))
 
