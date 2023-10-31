@@ -1,4 +1,5 @@
 # This function will load csv, txt and excel files based on extension
+# loc is the location of users data file
 
 Load = function(loc) {
 
@@ -39,5 +40,6 @@ Load = function(loc) {
     stop ("Invalid File Type")
     }
   }
+  dta = na.omit(dta) #remove rows with missing values
   return (dta)
  }
