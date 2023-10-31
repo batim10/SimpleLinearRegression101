@@ -58,7 +58,10 @@ Visual <- function(table, p = 19, c = "blue" ){
 
   qqnorm(y, main = paste("Normal Q-Q Plot", y_lab))
 
-  print("Shaprio test for normality. P value < 0.05 suggest that data is not normally distributed")
+  dev.off()
+
+  print("Shaprio test for normality. P value < 0.05 suggest that data is not
+        normally distributed. Interpret in context of graphical data")
 
   shaprio.test(x)
   shapiro.test(y)
