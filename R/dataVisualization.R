@@ -3,21 +3,15 @@
 #p is pch. Default is 19
 #c is color of dots
 
+source("dataVectorsTitles")
+
 Visual <- function(table, p = 19, c = "blue" ){
-  response <- readline(prompt = "Is your response variable in column 1 or 2?")
-  if (response == 1){
-    y <- table[,1]
-    x <- table[,2]
-    x_lab <- colnames(table)[2]#use header title for x labels
-    y_lab <- colnames(table)[1]#use header title for y lavels
-  } else if (response == 2){
-    y <- table[,2]
-    x <- table[,1]
-    x_lab <- colnames(table)[1]
-    y_lab <- colnames(table)[2]
-  } else {
-    stop("Invalid response")
-  }
+  dtaVect <- xyVectors(table)
+  x <- dtaVect$x
+  y <- dtaVect$y
+  x_lab <- dtaVect$x_lab
+  y_lab < - dtaVec$y_lab
+
   pdf("dtaGraphs.pdf") #Opens pdf
 
   par(mfrow = c(1,3)) #Output graphs with 3 graphs per page
@@ -68,4 +62,5 @@ Visual <- function(table, p = 19, c = "blue" ){
 
   shaprio.test(x)
   shapiro.test(y)
+
 }
