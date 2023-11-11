@@ -1,0 +1,13 @@
+Package: SimpleLinearRegression101
+Type: Package
+Title: Guides user through creation and analysis of simple linear regression 
+        model
+Version: 0.1.0
+Author: Bati Myles <bmyles@tamu.edu> ["aut","cre"]
+Maintainer: Bati Myles <bmyles@tamu.edu>
+Description: Guides user through determining if data is appropriate for creation
+    of simple linear regression model, creating model, analysis of validity
+    and interpretation of model 
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
