@@ -6,7 +6,8 @@ Correlation <- function(x,y){
   y <- dtaVect$y
 
   response <- readline(
-  prompt <- "Do your variables appear to have a linear relationship? Answer Y or N:"
+
+    prompt <- "Do your variables appear to have a linear relationship? Answer Y or N:"
   )
   if (response == Y){
     response2 <- readline(
