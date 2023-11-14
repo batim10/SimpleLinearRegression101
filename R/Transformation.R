@@ -1,10 +1,12 @@
 #Box cox transformation for data without linear relationship
-# Perform box-cox transformation if variables do not have linear relationship
+#Perform box-cox transformation if variables do not have linear relationship
 #Consider using car::powerTransformation. User needs to interpret and apply
 
-transformation <- function(x,y){
+transformation <- function(x,y,x_lab,y_lab){
 
-  #Extract X and Y from user data
+  #Extract X and Y from user data; these should be extracted first then
+  #input into function, fix later
+
   dtaVect <- xyVectors(table)
   x <- dtaVect$x
   y <- dtaVect$y
@@ -17,14 +19,14 @@ transformation <- function(x,y){
       Respond B for both")
 
   if (response == "X"){
-    bc_x <- MASS::boxcox(x~1) #Use MASS library to do box cox analysis
-    lambdax <- bc_x$x[which.max(bc_x$y)] #use lambda that maximizes MLE
-    x <- if (lambdax != 0)(x^lambdax - 1)/lambda else (log(x)) #perform transformation
+    bc_y <- MASS::boxcox(y~1) #Use MASS library to do box cox analysis
+    lambday <- bc_y$x[which.max(bc_y$y)] #use lambda that maximizes MLE
+    y <- if (lambday != 0)(y^lambday - 1)/lambda else (log(y)) #perform transformation
 
   } else if (response == "Y"){
-    bc_y <- MASS::boxcox(y~1)
-    lambday <- bc_y$x[which.max(bc_y$y)]
-    y <- if (lambday != 0)(x^lambday - 1)/lambda else (log(y))
+    bc_x <- MASS::boxcox(x~1)
+    lambdax <- bc_y$x[which.max(bc_y$y)]
+    x <- if (lambdax != 0)(x^lambday - 1)/lambda else (log(x))
 
   } else if (response == "N"){
     bc_x <- MASS::boxcox(x~1)
@@ -33,10 +35,10 @@ transformation <- function(x,y){
 
     bc_y <- MASS::boxcox(y~1)
     lambday <- bc_y$x[which.max(bc_y$y)]
-    y <- if (lambday != 0)(x^lambday - 1)/lambda else (log(y))
+    y <- if (lambday != 0)(y^lambday - 1)/lambda else (log(y))
 
   } else if(response == "B"){
-    stop("Your data must have linear relationship for this analysis")
+    stop("Transformation will not improve your model")
   } else {
     stop("Invalid response")
   }
