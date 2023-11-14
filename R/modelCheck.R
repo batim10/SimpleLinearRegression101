@@ -1,3 +1,4 @@
+#Check model validity
 
 validity <- function(){
 print(" We will be assessing the validity of our model before performing
@@ -49,7 +50,7 @@ responses[4] <- readline(
 if (any(responses != "Y") & any(responses != "N")){
   stop("Invalid Response")
 
-  } else if (all(responses == "Y")){ #Valid model if all assumptions mets
+  } else if (all(responses == "Y")){ #Valid model if all assumptions met
   print("Your model is valid")
   return (TRUE)
 
