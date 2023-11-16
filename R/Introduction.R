@@ -64,7 +64,9 @@ intro = function(){
   if (response3 == "N"){
     stop("Format your data appropriately then start over")
   }else if (response == "Y"){
-    response3 = readline(prompt = "Enter path to the location of your data file")
+    response3 = readline(prompt ='Enter path to the location of your data file using the following format:
+
+                         "Drivename:/path" enclosing path in quotes and using forward slashes')
     return(reponse3)
   }else{
     stop("Invalid Response")
