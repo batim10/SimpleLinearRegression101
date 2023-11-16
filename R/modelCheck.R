@@ -75,7 +75,7 @@ if (any(responses != "Y") & any(responses != "N")){
   }else{
     if (responses[2] == "N" & all(responses[-2]) == "Y"){
       print("You can use bootstrapping to obtain a linear model")
-      return(TRUE)
+      return("Boot")
     }
   }
 }

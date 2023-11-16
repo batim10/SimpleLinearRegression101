@@ -5,12 +5,8 @@
 
 source("dataVectorsTitles")
 
-Visual <- function(table, p = 19, c = "blue" ){
-  dtaVect <- xyVectors(table)
-  x <- dtaVect$x
-  y <- dtaVect$y
-  x_lab <- dtaVect$x_lab
-  y_lab < - dtaVec$y_lab
+Visual <- function(x, y, x_lab, y_lab, p = 19,c = "blue"){
+
 
   pdf("dtaGraphs.pdf") #Opens pdf
 
