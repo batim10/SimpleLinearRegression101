@@ -1,6 +1,22 @@
 #Provide user with information regarding linear modeling
 
+#Source files containing necessary functions
+
+
+
 SLR101 = function(){
+
+  source("Correlation.R")
+  source("dataVectorsTitles.R")
+  source("dataVisualization.R")
+  source("Introduction.R")
+  source("LM101.R")
+  source("LoadData.R")
+  source("modelCheck.R")
+  source("outputLM.R")
+  source("Transformation.R")
+
+
   step1 <- intro()
 
   step2 <- Load(step1)
@@ -16,19 +32,21 @@ SLR101 = function(){
 
   step5 <- Correlation(x,y)
 
-  step6 <- SimpleLinear(x,y,x_lab,y_lab)
+  step6 <- SimpleLinear(x,y)
 
   step7 <- modelCheck()
 
   print("If your model is valid, we will use your model to find Confidence Intervals for mean respose and Predictor Intervals
         for an individual response variable given a predictor variable valueat a level of .95")
+
   userResponse <- readline(prompt <- "At which value of your predictor variable would you like to calculate Confidence Intervals?")
 
   if (step7){
     CI <- predict(step6, newdata=data.frame(x_lab = userResponse), interval = "confidence", level = .95)
+
     cat("The Confidence Interval for your response variable at your given predictor variable value
         is",CI,"\n")
-    }else if (step7 = "Boot"){
+    }else if (step7 == "Boot"){
 
     print("As you require bootstrapping to calculate Confidence intervals for your
           response variable, we will also use bootstrapping to calculate your coefficients")
