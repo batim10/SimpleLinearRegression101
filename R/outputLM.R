@@ -1,22 +1,21 @@
 #Perform simple linear regression, provide interpretions of output
 #Including questions regarding model validity; may make this a separate function
 
-SimpleLinear <- function(x,y, x_lab,y_lab){
+SimpleLinear <- function(x,y){
 
   plot(x, y, xlab = x_lab, ylab = y_lab)
 
-  n <- length(x)
-  x <- cbind(rep(1,n),x) #Add column of 1s to get intercept
+  #Add column of 1s to get intercept
 
   fit <- lm(y~x) #Create linear model
-  modelFit <-summary(fit) #Plot residuals
+  modelFit <-summary(fit) #Linear model info
 
   #Output the coefficients and the p value indicating if this is a significant
   #Relationship
 
   print(modelFit)
 
-  cat("Your linear model is: y = ",model$coefFitficients[1],"+",model$coefficients[2],"x","\n")
+  cat("Your linear model is: y = ",modelFit$coefFitficients[1],"+",modelFit$coefficients[2],"x","\n")
   cat("The p-values for the intercept and slope are:",modelFit$coefficients[,"Pr(>|t|)"],"\n")
   cat("The standard errors of your coefficients are: ",modelFit$coefficients[,"Std.Error"],"\n")
   cat("The residual standard error is", modelFit$sigma,"\n")
@@ -35,7 +34,7 @@ SimpleLinear <- function(x,y, x_lab,y_lab){
         for your coefficients and model")
 
   par(mfrow = c(2,2))
-  plot(fit)
+  plot(fit) #Create residuals plots
 
   return(modelFit)
   }
