@@ -2,7 +2,7 @@
 #If appropriate will return location of data
 
 intro = function(){
-  print(
+  cat(
     "We will be modeling the relationship between two variables with simple
     linear regression as well as exploring the strength of correlation.
 
@@ -17,12 +17,12 @@ intro = function(){
 
     There are multiple types of data that can be collected when looking for
     correlation and when building predictive and explanatory models. Here are the
-    most common types:
+    most common types:\n
 
     Nominal data: Categories/named groups without inherent order. Examples: Types
     of cars, gender (male/female) , sample of different baseball teams, True/False
     This can be binary  (only two categories) or multinominal  (more than two
-    categories)
+    categories)\n
 
     Ordinal data: Categories with inherent ranks that are not necessarily
     measurable or uniform. Examples: First, second, third.
@@ -33,43 +33,49 @@ intro = function(){
     categories without intermediate values (i.e Cannot have .33 cars)
 
     Continuous:  Numerical data that can take only any value within a given range.
-    Examples: Height, weight,time"
+    Examples: Height, weight,time \n"
           )
+while(TRUE){
   response = readline(prompt = "Is your response variable continuous? Answer Y or N: ")
 
-  if (response == "N"){
+  if(tolower(response) %in% c("y","n")){
+    if (tolower(response) == "n"){
     stop("Simple linear regression is not a suitable method to model your data.")
 
 
-    }else if (response == "Y"){
+    }else{
     response2 = readline(prompt = "Is your explanatory variable binary or continuous?")
 
-    if (response2 == "N"){
+      if (tolower(response2) == "n"){
       stop("Simple linear regression is not a suitable method to model your data.")
-    }else if (response2 != "Y" & response2 != "N"){
-      stop("Invalid Response")
-    }else{
-    stop("Invalid Response")
-  }
-}
-  print("Important formatting notes:
+      }else if (tolower(response2) %in% c("y","n")){
+
+        cat("Important formatting notes:
         * Your data should be formatted appropriately with your explanatory
           and response variables in a single dataset.
         * If your explanatory variable is binary your two categories
-          should be expressed as 0 or 1 in your dataset
+          should be expressed as 0 or 1 in your datase
         * Your data should be saved in one of the following formats for this program:
-           csv, xlsx, txt")
-  response3 = readline(prompt = "Is your data appropriately formatted? Answer Y or N: ")
+           csv, xlsx, txt \n")
+        response3 = readline(prompt = "Is your data appropriately formatted? Answer Y or N: ")
 
-  if (response3 == "N"){
-    stop("Format your data appropriately then start over")
-  }else if (response == "Y"){
-    response3 = readline(prompt ='Enter path to the location of your data file using the following format:
+        if (tolower(response3) == "n"){
+        stop("Format your data appropriately then start over")
+        }else if (tolower(response3) == "y"){
+          response4 = readline(prompt ='Enter path to the location of your data file using the following format:
+          "Drivename:/path" enclosing path in quotes and using forward slashes')
+          return(reponse4)
+          break
+        }else{
+        stop("Invalid Response")        }
+      }
+    }else{
+        stop("Invalid Response")
+      }
 
-                         "Drivename:/path" enclosing path in quotes and using forward slashes')
-    return(reponse3)
   }else{
-    stop("Invalid Response")
+      cat("Invalid Response")
+    }
   }
 }
 
