@@ -26,7 +26,8 @@ Correlation <- function(x,y){
     } else {
       stop("Your Data is Not Appropriate for Correlation Testing")
     }
-  } print(relationship)
+  }
+    print(relationship)
     print("The strength and direction of correlation are given by rho or cor.
             If your p-value is less than your significance level then this
             correlation is statistically significant.")
