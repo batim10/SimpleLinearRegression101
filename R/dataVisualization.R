@@ -3,7 +3,6 @@
 #p is pch. Default is 19
 #c is color of dots
 
-source("dataVectorsTitles")
 
 Visual <- function(x, y, x_lab, y_lab, p = 19,c = "blue"){
 
