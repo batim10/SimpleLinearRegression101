@@ -2,8 +2,7 @@
 #If appropriate will return location of data
 
 intro = function(){
-  cat(
-    "We will be modeling the relationship between two variables with simple
+  cat("We will be modeling the relationship between two variables with simple
     linear regression as well as exploring the strength of correlation.
 
     When building a linear model, the explanatory or independent variable
@@ -64,15 +63,15 @@ while(TRUE){
         }else if (tolower(response3) == "y"){
           response4 = readline(prompt ='Enter path to the location of your data file using the following format:
           "Drivename:/path" enclosing path in quotes and using forward slashes')
-          return(reponse4)
+          return(response4)
           break
         }else{
-        stop("Invalid Response")        }
+        cat("Invalid Response")
       }
     }else{
-        stop("Invalid Response")
+        cat("Invalid Response")
       }
-
+    }
   }else{
       cat("Invalid Response")
     }
