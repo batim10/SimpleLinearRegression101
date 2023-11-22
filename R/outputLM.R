@@ -23,7 +23,7 @@ SimpleLinear <- function(x,y){
   cat("F statistic:", modelFit$fstatistic[1],"\n")
   cat("F statistic p value:", modelFit$Fstatistic,"\n")
 
-  print("If your p-values are less than your level of significance this suggests
+  cat("If your p-values are less than your level of significance this suggests
         that your model demonstrates a statistically significant relationship
         between your variables
 
