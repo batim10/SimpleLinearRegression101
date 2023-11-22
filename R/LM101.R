@@ -2,6 +2,8 @@
 
 #Source files containing necessary functions
 
+#path for my dataset is "C:\Users\batim\OneDrive\Documents\STAT608\TextbookResources\Data\Data\my_airlines.txt"
+#Name rnorm data, then y can be that times 2 plus 5
 
 
 SLR101 = function(){
@@ -36,7 +38,7 @@ SLR101 = function(){
 
   step7 <- modelCheck()
 
-  print("If your model is valid, we will use your model to find Confidence Intervals for mean respose and Predictor Intervals
+  cat("If your model is valid, we will use your model to find Confidence Intervals for mean respose and Predictor Intervals
         for an individual response variable given a predictor variable valueat a level of .95")
 
   userResponse <- readline(prompt <- "At which value of your predictor variable would you like to calculate Confidence Intervals?")
@@ -48,13 +50,14 @@ SLR101 = function(){
         is",CI,"\n")
     }else if (step7 == "Boot"){
 
-    print("As you require bootstrapping to calculate Confidence intervals for your
+    cat("As you require bootstrapping to calculate Confidence intervals for your
           response variable, we will also use bootstrapping to calculate your coefficients")
-
+    #Number of bootstrap samples
     B <- 1000
 
+    #Predicted value of Y based on linear model; will create B bootstraps of this value
     yhat <- function(x,y){
-      boot_indices <- sample(1:nrow(x), replace = TRUE)
+      boot_indices <- sample(1:nrow(x), replace = TRUE) #Sample to bootstrap
 
       boot_model <- lm(y[boot_indices]~x[boot_indices])
 
