@@ -7,40 +7,40 @@ transformation <- function(x,y,x_lab,y_lab){
   #Extract X and Y from user data; these should be extracted first then
   #input into function, fix later
 
-  dtaVect <- xyVectors(table)
-  x <- dtaVect$x
-  y <- dtaVect$y
-
+  while(TRUE){}
   response <- readlline(
     prompt = "Are either of your datasets normally distributed?
       Respond X for explanatory variable.
       Respond Y for response variable.
       Respond N for neither.
       Respond B for both")
+  if (tolower(reponse) %in% c("x","y","n","b")){
+    if (response == "X"){
+      bc_y <- MASS::boxcox(y~1) #Use MASS library to do box cox analysis
+      lambday <- bc_y$x[which.max(bc_y$y)] #use lambda that maximizes MLE
+      y <- if (lambday != 0)(y^lambday - 1)/lambda else (log(y)) #perform transformation
 
-  if (response == "X"){
-    bc_y <- MASS::boxcox(y~1) #Use MASS library to do box cox analysis
-    lambday <- bc_y$x[which.max(bc_y$y)] #use lambda that maximizes MLE
-    y <- if (lambday != 0)(y^lambday - 1)/lambda else (log(y)) #perform transformation
+    } else if (response == "Y"){
+      bc_x <- MASS::boxcox(x~1)
+      lambdax <- bc_y$x[which.max(bc_y$y)]
+      x <- if (lambdax != 0)(x^lambday - 1)/lambda else (log(x))
 
-  } else if (response == "Y"){
-    bc_x <- MASS::boxcox(x~1)
-    lambdax <- bc_y$x[which.max(bc_y$y)]
-    x <- if (lambdax != 0)(x^lambday - 1)/lambda else (log(x))
+    } else if (response == "N"){
+      bc_x <- MASS::boxcox(x~1)
+      lambdax <- bc_x$x[which.max(bc_x$y)]
+      x <- if (lambdax != 0)(x^lambdax - 1)/lambda else (log(x))
 
-  } else if (response == "N"){
-    bc_x <- MASS::boxcox(x~1)
-    lambdax <- bc_x$x[which.max(bc_x$y)]
-    x <- if (lambdax != 0)(x^lambdax - 1)/lambda else (log(x))
+      bc_y <- MASS::boxcox(y~1)
+      lambday <- bc_y$x[which.max(bc_y$y)]
+      y <- if (lambday != 0)(y^lambday - 1)/lambda else (log(y))
 
-    bc_y <- MASS::boxcox(y~1)
-    lambday <- bc_y$x[which.max(bc_y$y)]
-    y <- if (lambday != 0)(y^lambday - 1)/lambda else (log(y))
+    }else{
+      stop("Transformation will not improve your model")
+      break
+    }
 
-  } else if(response == "B"){
-    stop("Transformation will not improve your model")
-  } else {
-    stop("Invalid response")
+    }else {
+    cat("Invalid response")
   }
 
   #plot transformed variables to look for linear relationship
@@ -48,16 +48,21 @@ transformation <- function(x,y,x_lab,y_lab){
   plot(x, y, pch = p, color = c, xlab = x_lab, ylab = y_lab, main = "Scatterplot")
   lmout <- lm(y~x)
   abline(lmout)
+
+  while(TRUE){}
   response2 <- readline(
     prompt = "Do your data have a linear relationship? Respond Y or N")
 
   #return list of transformed variables or NAs
-  if (response == "Y"){
-    return (list(x,y))
-  } else if (response == "N"){
-    return(list(NA,NA))
-  } else {
-    stop("Invalid Response")
-  }
+  if (tolower(response2) %in% c("y","n")){
+    if (response2 == "Y"){
+      return (list(x,y))
+    } else{
+      return(list(NA,NA))
+      break
+    }
+  }else{
+      cat("Invalid Response")
+    }
 
 }
