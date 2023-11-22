@@ -1,7 +1,8 @@
-#Visualize data
+#Visualize data with scatter plots, histograms and density plots
 #table is a dataframe from loading user data
 #p is pch. Default is 19
 #c is color of dots
+
 
 
 Visual <- function(x, y, x_lab, y_lab, p = 19,c = "blue"){
@@ -52,7 +53,7 @@ Visual <- function(x, y, x_lab, y_lab, p = 19,c = "blue"){
 
   dev.off()
 
-  print("Shaprio test for normality. P value < 0.05 suggest that data is not
+  cat("Shaprio test for normality. P value < 0.05 suggest that data is not
         normally distributed. Interpret in context of graphical data")
 
   shaprio.test(x)
