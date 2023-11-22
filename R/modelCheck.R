@@ -1,7 +1,7 @@
 #Check model validity
 
 validity <- function(){
-print(" We will be assessing the validity of our model before performing
+cat(" We will be assessing the validity of our model before performing
         more analysis. A valid model must adhere to the assumptions of
         the linear model.
         These assumptions are:
@@ -13,7 +13,7 @@ print(" We will be assessing the validity of our model before performing
 responses = rep(NA,4) #Initialize empty vector
 
 
-print("The residuals vs fitted plot should demonstrate a random scatter of
+cat("The residuals vs fitted plot should demonstrate a random scatter of
         of residuals on both sides of 0 without a signficant change or trend
         across fitted values indicating homoscedasticity and linearity")
 
@@ -21,7 +21,7 @@ print("The residuals vs fitted plot should demonstrate a random scatter of
 responses[1] <- readline(
   prompt <- "Do your residuals appear to be randomly scattered? Answer Y or N")
 
-print("Your Normal Q-Q plot should show that your standardized residals fit
+cat("Your Normal Q-Q plot should show that your standardized residals fit
         the predicted line well indicating that they are normally distributed")
 
 responses[2] <- readline(
@@ -31,13 +31,13 @@ responses[2] <- readline(
   demonstrate a normal distribution."
 )
 
-print("Your Scale-Location plot should demonstrate a fitted line that is
+cat("Your Scale-Location plot should demonstrate a fitted line that is
         flat. This demonstrates homoscedasticity ")
 
 responses[3] <- readline(
   prompt = "Do your residuals demonstrate homoscedasticity? Answer Y or N")
 
-print("Your Residuals vs Leverage plot will indicate if you have outliers
+cat("Your Residuals vs Leverage plot will indicate if you have outliers
         that have high leverage which can have a disproportionate
         affect on your model. These points will often have large Cook's distance")
 
@@ -51,7 +51,7 @@ if (any(responses != "Y") & any(responses != "N")){
   stop("Invalid Response")
 
   } else if (all(responses == "Y")){ #Valid model if all assumptions met
-  print("Your model is valid")
+  cat("Your model is valid \n")
   return (TRUE)
 
   }else if (any(responses) == "N"){
