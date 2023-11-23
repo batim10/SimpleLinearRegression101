@@ -15,12 +15,15 @@ Load = function(loc){
   }
 
   #Need to query about using a decimal point for appropriate formatting
-  response1 = readline(prompt = "Do you use . as a decimal point? Response Y or N")
 
-  if (tolower(response1) != "y" & tolower(response1) != "n"){
-    stop("Invalid Response")
+  while (TRUE){
+  response1 = readline(prompt = "Do you use . as a decimal point? Response Y or N: ")
+  if (tolower(response1) %in% c("y","n")){
+    break
+  }else{
+    cat("Invalid Response")
   }
-
+  }
   #use lower case of user input to read file extension
   if (tolower(suffix) == "csv"){
     if (tolower(response1) == "y"){
