@@ -43,7 +43,7 @@ while(TRUE){
 
 
     }else{
-    response2 = readline(prompt = "Is your explanatory variable binary or continuous?")
+    response2 = readline(prompt = "Is your explanatory variable binary or continuous? y")
 
       if (tolower(response2) == "n"){
       stop("Simple linear regression is not a suitable method to model your data.")
@@ -61,8 +61,8 @@ while(TRUE){
         if (tolower(response3) == "n"){
         stop("Format your data appropriately then start over")
         }else if (tolower(response3) == "y"){
-          response4 = readline(prompt ='Enter path to the location of your data file using the following format:
-          "Drivename:/path" enclosing path in quotes and using forward slashes')
+          cat("Your pathway format should be: Drivename:/path")
+          response4 = readline(prompt ="Enter path to the location of your data file.")
           return(response4)
           break
         }else{
