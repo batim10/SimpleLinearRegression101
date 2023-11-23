@@ -1,7 +1,7 @@
 #More tools to help assess if data is normally distributed
 
 xyVectors <- function(table){
-  response <- readline(prompt = "Is your response variable in column 1 or 2? Respond 1 or 2")
+  response <- readline(prompt = "Is your response variable in column 1 or 2? Respond 1 or 2: ")
   if (response == 1){
     y <- table[,1]
     x <- table[,2]
@@ -15,5 +15,5 @@ xyVectors <- function(table){
   } else {
     stop("Invalid response")
   }
-  return(list(x,y, x_lab, y_lab))
+  return(list(x=x,y=y, x_lab=x_lab, y_lab=y_lab))
 }
