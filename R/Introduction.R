@@ -43,7 +43,7 @@ while(TRUE){
 
 
     }else{
-    response2 = readline(prompt = "Is your explanatory variable binary or continuous? y")
+    response2 = readline(prompt = "Is your explanatory variable binary or continuous? ")
 
       if (tolower(response2) == "n"){
       stop("Simple linear regression is not a suitable method to model your data.")
