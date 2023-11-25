@@ -1,5 +1,5 @@
-#Box cox transformation for data without linear relationship
-#Perform box-cox transformation if variables do not have linear relationship
+#Box cox transformation for data without linear relationship or for issues with model validity
+#Perform box-cox transformation if variables do not have linear relationship or if model assumptions not met
 #Consider using car::powerTransformation. User needs to interpret and apply
 
 transformation <- function(x,y,x_lab,y_lab){
@@ -7,62 +7,65 @@ transformation <- function(x,y,x_lab,y_lab){
   #Extract X and Y from user data; these should be extracted first then
   #input into function, fix later
 
-  while(TRUE){}
-  response <- readlline(
-    prompt = "Are either of your datasets normally distributed?
+  while(TRUE){
+  response <- readline(
+    prompt = "
+      Are either of your datasets normally distributed?
       Respond X for explanatory variable.
       Respond Y for response variable.
       Respond N for neither.
-      Respond B for both")
-  if (tolower(reponse) %in% c("x","y","n","b")){
-    if (response == "X"){
+      Respond B for both
+    ")
+  if (tolower(response) %in% c("x","y","n","b")){
+    break
+  }else{
+    cat("Invalid response")
+  }
+  }
+    if (tolower(response) == "x"){
       bc_y <- MASS::boxcox(y~1) #Use MASS library to do box cox analysis
       lambday <- bc_y$x[which.max(bc_y$y)] #use lambda that maximizes MLE
-      y <- if (lambday != 0)(y^lambday - 1)/lambda else (log(y)) #perform transformation
+      y <- if (lambday != 0)(y^lambday - 1)/lambday else (log(y)) #perform transformation
 
-    } else if (response == "Y"){
-      bc_x <- MASS::boxcox(x~1)
-      lambdax <- bc_y$x[which.max(bc_y$y)]
-      x <- if (lambdax != 0)(x^lambday - 1)/lambda else (log(x))
-
-    } else if (response == "N"){
+      } else if (tolower(response) == "y"){
       bc_x <- MASS::boxcox(x~1)
       lambdax <- bc_x$x[which.max(bc_x$y)]
-      x <- if (lambdax != 0)(x^lambdax - 1)/lambda else (log(x))
+      x <- if (lambdax != 0)(x^lambdax - 1)/lambdax else (log(x))
+
+    } else if (tolower(response) == "n"){
+      bc_x <- MASS::boxcox(x~1)
+      lambdax <- bc_x$x[which.max(bc_x$y)]
+      x <- if (lambdax != 0)(x^lambdax - 1)/lambdax else (log(x))
 
       bc_y <- MASS::boxcox(y~1)
       lambday <- bc_y$x[which.max(bc_y$y)]
-      y <- if (lambday != 0)(y^lambday - 1)/lambda else (log(y))
+      y <- if (lambday != 0)(y^lambday - 1)/lambday else (log(y))
 
-    }else{
+       }else if (tolower(response)== "b"){
       stop("Transformation will not improve your model")
-      break
     }
 
-    }else {
-    cat("Invalid response")
-  }
 
   #plot transformed variables to look for linear relationship
   print("Your Data Has Been Transformed Using Box Cox Transformation")
-  plot(x, y, pch = p, color = c, xlab = x_lab, ylab = y_lab, main = "Scatterplot")
+  plot(x, y, pch = 19, col = "blue", xlab = x_lab, ylab = y_lab, main = "Scatterplot")
   lmout <- lm(y~x)
   abline(lmout)
 
-  while(TRUE){}
+  while(TRUE){
   response2 <- readline(
-    prompt = "Do your data have a linear relationship? Respond Y or N")
+    prompt = "Do your data have a linear relationship? Respond Y or N ")
 
   #return list of transformed variables or NAs
   if (tolower(response2) %in% c("y","n")){
-    if (response2 == "Y"){
-      return (list(x,y))
+    if (tolower(response2) == "y"){
+      return (list(x=x,y=y))
     } else{
-      return(list(NA,NA))
+      return(list(x=NA,y=NA))
       break
     }
   }else{
       cat("Invalid Response")
     }
-
+}
 }
