@@ -1,11 +1,8 @@
 #Perform simple linear regression, provide interpretions of output
 #Including questions regarding model validity; may make this a separate function
+#Need to fix the two comments/output
 
 SimpleLinear <- function(x,y){
-
-  plot(x, y, xlab = x_lab, ylab = y_lab)
-
-  #Add column of 1s to get intercept
 
   fit <- lm(y~x) #Create linear model
   modelFit <-summary(fit) #Linear model info
@@ -15,15 +12,16 @@ SimpleLinear <- function(x,y){
 
   print(modelFit)
 
-  cat("Your linear model is: y = ",modelFit$coefFitficients[1],"+",modelFit$coefficients[2],"x","\n")
+  cat("Your linear model is: y = ",modelFit$coefficients[1],"+",modelFit$coefficients[2],"x","\n")
   cat("The p-values for the intercept and slope are:",modelFit$coefficients[,"Pr(>|t|)"],"\n")
-  cat("The standard errors of your coefficients are: ",modelFit$coefficients[,"Std.Error"],"\n")
+  #cat("The standard errors of your coefficients are: ",modelFit$coefficients[,"Std.Error"],"\n")
   cat("The residual standard error is", modelFit$sigma,"\n")
   cat("The R squared value is:",modelFit$r.squared,"\n")
   cat("F statistic:", modelFit$fstatistic[1],"\n")
-  cat("F statistic p value:", modelFit$Fstatistic,"\n")
+  #cat("F statistic p value:", modelFit$Fstatistic,"\n")
 
-  cat("If your p-values are less than your level of significance this suggests
+  cat("
+        If your p-values are less than your level of significance this suggests
         that your model demonstrates a statistically significant relationship
         between your variables
 
