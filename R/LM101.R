@@ -68,28 +68,32 @@ SLR101 = function(){
     #Number of bootstrap samples
     B <- 1000
 
+    #Arrange vectors in dataframe
     boot_df <- data.frame(x_lab = x, y_lab= y)
     colnames(boot_df) <- c(x_lab,y_lab)
 
-    #yhat function requires two arguments, often second argument are incides
-    indices <- sample(1:length(x), replace = TRUE) #Sample to bootstrap
 
     #Predicted value of Y based on linear model; will create B bootstraps of this value
-
     #Apply function yhat to data in table 1000 times using boot library/function
     int_boot <- boot::boot(boot_df,yhat,B)
 
     #Get confidence intervals with boot.ci function from boot library
     CI_yhat <- boot::boot.ci(int_boot, type = "perc") #Get confidence intervals
 
-    #Use mean betas as estimates for model
-    int_boot_coef <-  boot::boot(boot_df,boot_betas,B)
+    #Use boot to obtain bootstrap estimates of model coefficients
+    boot_coef <-  boot::boot(boot_df,boot_betas,B)
 
 
-  cat("The Confidence Interval for your response variable given your predictor variable is",CI_yhat)
+  cat("The Confidence Interval for your response variable given your predictor variable is: ")
+  CI_yhat
 
-  cat("Your estimated model coefficients are",int_boot_coef)
-  }else{
+  cat("Your predicted response given predictor variable is: ")
+  int_boot
+
+  cat("Your estimated model coefficients are:")
+  boot_coef
+
+ }else{
     stop("Your data as it is cannot be modeled using simple linear regression")
   }
 }
