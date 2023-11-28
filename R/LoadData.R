@@ -24,6 +24,7 @@ Load = function(loc){
     cat("Invalid Response")
   }
   }
+
   #use lower case of user input to read file extension
   if (tolower(suffix) == "csv"){
     if (tolower(response1) == "y"){
@@ -34,17 +35,20 @@ Load = function(loc){
     response2 = readline(prompt = "Is your data in a table or tab delimited? Respond table or tab: ")
     if (tolower(response2) == "table"){
       dta = read.table(loc, header = TRUE)
-  }else if (tolower(response2) == "tab"){
+    }else if (tolower(response2) == "tab"){
       if (tolower(response1) == "y"){
         dta = read.delim(loc)
       }else if (tolower(response1) == "n"){
       dta = read.delim2(loc)}
-      }else if(tolower(suffix) == "xlsx"){
-      readx1::read.excel(loc)
+    }else{
+      stop("Invalid File Type \n")
+    }
+  }else if(tolower(suffix) == "xlsx"){
+      dta <- openxlsx::read.xlsx(loc)
   }else{
-    stop ("Invalid File Type")
+    stop("Invalid File Type \n")
   }
-  }
+
   dta = na.omit(dta) #remove rows with missing values
   return (dta)
   }
