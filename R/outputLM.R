@@ -12,24 +12,29 @@ SimpleLinear <- function(x,y){
 
   print(modelFit)
 
+  coef_SE <- modelFit$coefficients[,"Std. Error"]
+
   cat("Your linear model is: y = ",modelFit$coefficients[1],"+",modelFit$coefficients[2],"x","\n")
   cat("The p-values for the intercept and slope are:",modelFit$coefficients[,"Pr(>|t|)"],"\n")
-  #cat("The standard errors of your coefficients are: ",modelFit$coefficients[,"Std.Error"],"\n")
+  cat("The standard errors of your intercept and coefficient are: ",
+        coef_SE[1],coef_SE[2],"\n")
   cat("The residual standard error is", modelFit$sigma,"\n")
   cat("The R squared value is:",modelFit$r.squared,"\n")
   cat("F statistic:", modelFit$fstatistic[1],"\n")
-  #cat("F statistic p value:", modelFit$Fstatistic,"\n")
+  cat("F statistic p value:", modelFit$fstatistic[2],"\n\n")
+
+  cat("Note: The F statistic is not relevant for simple linear regression \n\n")
 
   cat("
-        If your p-values are less than your level of significance this suggests
-        that your model demonstrates a statistically significant relationship
-        between your variables
+        If p-values of your coefficients are less than your level of significance
+        this suggests that your model demonstrates a statistically significant
+        relationship between your variables
 
         The R squared is what percentage of the variability in the dependent variable
         is explained by the model. The closer it is to 1 the stronger the model
 
         You can use your standard errors to calculate confidence intervals
-        for your coefficients and model")
+        for your coefficients and model \n\n")
 
   par(mfrow = c(2,2))
   plot(fit) #Create residuals plots
