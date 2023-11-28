@@ -52,6 +52,11 @@ Correlation <- function(x,y, x_lab,y_lab){
         if (tolower(response3) == "y"){
           stop("A correlation coefficient cannot be calculated for your data")
         }else{
+          cat("
+          *A box cox transformation will be performed on your data
+          *If your resulting data has a linear relationship a pearson
+          correlation coefficient will be calculated
+              ")
           output <- transformation(x,y,x_lab,y_lab)
           if (length(output$x) > 1){
             relationship <- cor.test(output$x, output$y, method = "pearson")
@@ -72,5 +77,6 @@ Correlation <- function(x,y, x_lab,y_lab){
 
            * If your p-value is less than your significance level then this
             correlation is statistically significant.\n")
-    return(relationship)
+
+    print(relationship)
 }
