@@ -3,26 +3,29 @@
 #Source files containing necessary functions
 
 #path for my dataset is "C:\Users\batim\OneDrive\Documents\STAT608\TextbookResources\Data\Data\my_airlines.txt"
+#"C:\Users\batim\OneDrive\Documents\STAT608\TextbookResources\Data\Data\myAdRevenue.xlsx"
 #Name rnorm data, then y can be that times 2 plus 5
 
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/Correlation.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/dataVectorsTitles.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/dataVisualization.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/Introduction.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/LM101.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/LoadData.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/modelCheck.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/outputLM.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/Transformation.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/y_pred.R")
-source("C:/Users/batim/OneDrive/Documents/SimpleLinearRegression101/R/boot_coefs.R")
+source("~/SimpleLinearRegression101/R/Correlation.R")
+source("~/SimpleLinearRegression101/R/dataVectorsTitles.R")
+source("~/SimpleLinearRegression101/R/dataVisualization.R")
+source("~/SimpleLinearRegression101/R/Introduction.R")
+source("~/SimpleLinearRegression101/R/LoadData.R")
+source("~/SimpleLinearRegression101/R/modelCheck.R")
+source("~/SimpleLinearRegression101/R/outputLM.R")
+source("~/SimpleLinearRegression101/R/Transformation.R")
+source("~/SimpleLinearRegression101/R/y_pred.R")
+source("~/SimpleLinearRegression101/R/boot_coefs.R")
 
-SLR101 = function(){
+SLR101 <- function(){
 
+  #Provide intro;provide path for user data
   step1 <- intro()
 
+  #Load data based on extension
   step2 <- Load(step1)
 
+  #Clearly define dependent and independent variables
   step3 <- xyVectors(step2)
 
   x <- step3$x
@@ -30,17 +33,35 @@ SLR101 = function(){
   x_lab <- step3$x_lab
   y_lab <- step3$y_lab
 
+  chk_numeric_x <- all(sapply(x, is.numeric))
+  chk_numeric_y <- all(sapply(y, is.numeric))
+
+
+  #check the loaded data is numeric
+  if(chk_numeric_x & chk_numeric_y){
+
+  #Graphs and testing to see if data has normal distribution or not
   step4 <- Visual(x,y,x_lab,y_lab)
 
+  }else{
+    stop("Your data must be numeric")
+  }
+
+  #Calculating  correlation coefficient for variables
   step5 <- Correlation(x,y,x_lab,y_lab)
 
+  print(step5)
+
+  #Use simple linear regression to create model
   step6 <- SimpleLinear(x,y)
 
+  #Check that model follows assumptions/is valid
   step7 <- validity(x,y,x_lab,y_lab)
 
+  #Calculate confidence intervals from linear model either using predict or bootstrap
   cat("
-        If your model is valid, we will use your model to find Confidence Intervals for mean respose and Predictor Intervals
-        for an individual response variable given a predictor variable value at a level of .95")
+      We will use your model to find Confidence Intervals for mean respose
+      given a predictor variable value at a level of .95 \n")
 
   userResponse <- readline(
   prompt <- "Value of your predictor variable to calculate Confidence Intervals: ")
@@ -63,7 +84,7 @@ SLR101 = function(){
 
     cat("
           As you require bootstrapping to calculate Confidence intervals for your
-          response variable, we will also use bootstrapping to calculate your coefficients")
+          response variable, we will also use bootstrapping to calculate your coefficients \n")
 
     #Number of bootstrap samples
     B <- 1000
@@ -78,20 +99,23 @@ SLR101 = function(){
     int_boot <- boot::boot(boot_df,yhat,B)
 
     #Get confidence intervals with boot.ci function from boot library
-    CI_yhat <- boot::boot.ci(int_boot, type = "perc") #Get confidence intervals
+    CI_yhat <- boot::boot.ci(int_boot, type = "perc")
+
+    boot_y <- CI_yhat$t0
+
+    boot_int <- CI_yhat$percent
 
     #Use boot to obtain bootstrap estimates of model coefficients
     boot_coef <-  boot::boot(boot_df,boot_betas,B)
 
 
-  cat("The Confidence Interval for your response variable given your predictor variable is: ")
-  CI_yhat
+  cat("
+        The Confidence Interval for your response variable given your predictor
+        variable is:",boot_int[4,],boot_int[5,],"\n")
 
-  cat("Your predicted response given predictor variable is: ")
-  int_boot
+  cat("Your predicted response given predictor variable is:",boot_y,"\n")
 
-  cat("Your estimated model coefficients are:")
-  boot_coef
+  cat("Your estimated model coefficients are:",boot_coef[1],boot_coef[2],"\n")
 
  }else{
     stop("Your data as it is cannot be modeled using simple linear regression")
