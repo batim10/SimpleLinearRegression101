@@ -40,6 +40,7 @@ Visual <- function(x, y, x_lab, y_lab, p = 19,c = "blue"){
 
   par(mfrow = c(1,3))
 
+  #Generate samples of normal, right and left skewed data
   normal <- rnorm(1000)
   gamma <- rgamma(1000, shape = 2, rate = 0.5)
   beta <- rbeta(1000, shape1 = 3, shape2 = 2)
