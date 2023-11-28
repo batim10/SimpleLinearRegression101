@@ -49,11 +49,12 @@ while(TRUE){
       stop("Simple linear regression is not a suitable method to model your data.")
       }else if (tolower(response2) %in% c("y","n")){
 
-        cat("Important formatting notes:
+        cat("
+        Important formatting notes:
         * Your data should be formatted appropriately with your explanatory
           and response variables in a single dataset.
         * If your explanatory variable is binary your two categories
-          should be expressed as 0 or 1 in your datase
+          should be expressed as 0 or 1 in your dataset
         * Your data should be saved in one of the following formats for this program:
            csv, xlsx, txt \n")
         response3 = readline(prompt = "Is your data appropriately formatted? Answer Y or N: ")
@@ -61,7 +62,6 @@ while(TRUE){
         if (tolower(response3) == "n"){
         stop("Format your data appropriately then start over")
         }else if (tolower(response3) == "y"){
-          cat("Your pathway format should be: Drivename:/path")
           response4 = readline(prompt ="Enter path to the location of your data file.")
           return(response4)
           break
