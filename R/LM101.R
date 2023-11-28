@@ -6,16 +6,6 @@
 #"C:\Users\batim\OneDrive\Documents\STAT608\TextbookResources\Data\Data\myAdRevenue.xlsx"
 #Name rnorm data, then y can be that times 2 plus 5
 
-source("~/SimpleLinearRegression101/R/Correlation.R")
-source("~/SimpleLinearRegression101/R/dataVectorsTitles.R")
-source("~/SimpleLinearRegression101/R/dataVisualization.R")
-source("~/SimpleLinearRegression101/R/Introduction.R")
-source("~/SimpleLinearRegression101/R/LoadData.R")
-source("~/SimpleLinearRegression101/R/modelCheck.R")
-source("~/SimpleLinearRegression101/R/outputLM.R")
-source("~/SimpleLinearRegression101/R/Transformation.R")
-source("~/SimpleLinearRegression101/R/y_pred.R")
-source("~/SimpleLinearRegression101/R/boot_coefs.R")
 
 SLR101 <- function(){
 
