@@ -15,7 +15,7 @@ transformation <- function(x,y,x_lab,y_lab){
       Respond Y for response variable.
       Respond N for neither.
       Respond B for both
-    ")
+    \n")
   if (tolower(response) %in% c("x","y","n","b")){
     break
   }else{
