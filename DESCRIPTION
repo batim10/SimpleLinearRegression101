@@ -5,12 +5,11 @@ Title: Guides user through creation and analysis of simple linear regression
 Version: 0.1.0
 Author: Bati Myles <bmyles@tamu.edu> ["aut","cre"]
 Maintainer: Bati Myles <bmyles@tamu.edu>
-Description: This package guides user through determining if data is appropriate 
-for creation a of simple linear regression model, creating model, analysis of 
-the validity of the model and an explanation of R output.
+Description: This package guides user through determining if data is appropriate for creation of simple linear regression model, creating model, analysis of the validity of the model and an explanation of R output.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+RoxygenNote: 7.2.3

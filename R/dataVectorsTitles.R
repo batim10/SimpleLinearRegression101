@@ -1,5 +1,15 @@
-#More tools to help assess if data is normally distributed
-
+#' xyVectors
+#'
+#' This function separates loaded table into predictor and response variable vectors
+#'
+#' @param table loaded user table
+#'
+#' @return list containing predictor and response variables and their column titles
+#'
+#' @examples
+#' xyVectors(table)
+#'
+#' @keywords internal
 xyVectors <- function(table){
   response <- readline(prompt = "Is your response variable in column 1 or 2? Respond 1 or 2: ")
   if (response == 1){

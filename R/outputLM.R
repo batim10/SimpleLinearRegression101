@@ -1,7 +1,17 @@
-#Perform simple linear regression, provide interpretions of output
-#Including questions regarding model validity; may make this a separate function
-#Need to fix the two comments/output
-
+#' Simple Linear
+#'
+#' This function performs simple linear regression on appropriate data
+#' This function also provides an explanation of the output
+#'
+#' @param x vector of predictor variable data points
+#' @param y vector or response variable data points
+#'
+#' @return summary of linear model
+#'
+#' @examples
+#' SimpleLinear(x,y)
+#'
+#' @keywords internal
 SimpleLinear <- function(x,y){
 
   fit <- lm(y~x) #Create linear model

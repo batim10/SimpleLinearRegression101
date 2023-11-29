@@ -1,7 +1,20 @@
-#Function integrating the interactive functions in this package allowing the
-#User to easily navigate performing simple linear regression
 
+#' LM101
+#'
+#' This is an interactive function guiding user through creation of a model using simple linear regression or bootstrapping.
+#' Confidence intervals for predictions are included as well.
+#'
+#' @return Linear model and confidence intervals
 
+#'
+#' @examples
+#'  \dontrun{
+#'  initiating function
+#'
+#'  SLR101()
+#'  }
+#'
+#' @export
 
 SLR101 <- function(){
 

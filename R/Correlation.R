@@ -1,7 +1,19 @@
-#Checks if correlation can be calculate and in what form
-#Pearson's if linear and normal
-#Spearman's if linear and not normal
-
+#' Correlation
+#'
+#' This function checks if data is appropriate for calculation of a correlation coefficient
+#' If appropriate, Pearson's (if linear and normal distribution) or Spearman's (linear relationship, not normal distribution)
+#'
+#' @param x vector of predictor variable data
+#' @param y vector of response variable data
+#' @param x_lab predictor variable column title
+#' @param y_lab response variable column title
+#'
+#' @return Pearson or Spearman's correlation constant with p values
+#'
+#' @examples
+#' Correlation(x,y,Wages,Travel)
+#'
+#' @keywords internal
 Correlation <- function(x,y, x_lab,y_lab){
 
   #Use while loop to reprompt user if they use invalid input

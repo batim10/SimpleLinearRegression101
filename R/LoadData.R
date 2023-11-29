@@ -1,6 +1,14 @@
-# This function will load csv, txt and excel files based on extension
-# loc is the location of users data file
-
+#' Load
+#' This function will load csv,txt and excel files based on extension
+#'
+#' @param loc path to users data file
+#'
+#' @return table with loaded user data
+#'
+#' @examples
+#' Load("C:\user\file.txt")
+#'
+#' @keywords internal
 Load = function(loc){
   #Divide file location into prefix before period and extension
   #Create list containing the user provided data pathway

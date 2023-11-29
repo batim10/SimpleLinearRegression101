@@ -1,7 +1,21 @@
-#Box cox transformation for data without linear relationship or for issues with model validity
-#Perform box-cox transformation if variables do not have linear relationship or if model assumptions not met
-#Consider using car::powerTransformation. User needs to interpret and apply
 
+#' transformation
+#'
+#' This function performs box cox transformation on data that does not have a normal distribution
+#' After transformation, a scatterplot is done to check if the two variables have a linear relationship
+#'
+#' @param x a vector or predictor variable data points
+#' @param y a vector of response variable data points
+#' @param x_lab the title o the predictor column
+#' @param y_lab title of the response column
+#'
+#' @return transformed predictor and/or response data or NA
+#'
+#'
+#' @examples
+#' transformation(x,y,x_lab,l_lab)
+#'
+#' @keywords internal
 transformation <- function(x,y,x_lab,y_lab){
 
   #Extract X and Y from user data; these should be extracted first then

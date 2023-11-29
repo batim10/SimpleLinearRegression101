@@ -1,8 +1,17 @@
-#Function to obtain bootstrap estimates of linear regression model coefficients
-#To use the boot function your statistics (this function) must have two arguments
-#Data and indices(these are randomly generated at each bootstrap)
-#Requires dependent variable be in second column
-
+#' boot_betas
+#'
+#' Function to use with boot function to obtain bootstrap estimates of linear regression model coefficients
+#' To use boot function need data and indices
+#'
+#' @param data User table with predictor variable in 1st colum and response variable in 2nd
+#' @param idx indices to use for generation of bootstrap samples
+#'
+#' @return estimated coefficients using simple linear regression
+#'
+#' @examples
+#' boot_betas(data,idx)
+#'
+#' @keywords internal
 boot_betas <- function(data,idx){
 
     boot_x <- data[,1]

@@ -1,10 +1,21 @@
-#Visualize data with scatter plots, histograms and density plots
-#table is a dataframe from loading user data
-#p is pch. Default is 19
-#c is color of dots
-
-
-
+#' Visual
+#'
+#' This function allows user to visualize data with scatter plots, histograms and density plots
+#' This function is also designed to help user determine if their data has a normal distribution
+#'
+#' @param x predictor variable data
+#' @param y response variable data
+#' @param x_lab predictor variable column title
+#' @param y_lab response variable column title
+#' @param p is pch and defaults to 19
+#' @param c is color of data and defaults to blue
+#'
+#' @return pdf containing plots and outcomes of shapiro wilks test
+#'
+#' @examples
+#' Visual(x,y,Wages, Travel)
+#'
+#' @keywords internal
 Visual <- function(x, y, x_lab, y_lab, p = 19,c = "blue"){
 
   cat("

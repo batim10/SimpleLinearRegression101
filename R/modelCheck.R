@@ -1,7 +1,22 @@
-#Check model validity
-#Transform data if needed
-#problem with loop
 
+#' validity
+#'
+#' This function checks that a previously generated linear model follows the assumptions of simple linear regression
+#' If appropriate and necessary the data are transformed using box cox transformation
+#'
+#'
+#' @param x vector of predictor variable data
+#' @param y vector of response variable data
+#' @param x_lab title of the predictor variable column
+#' @param y_lab title of the response variable column
+#'
+#' @return a list containing the original x and y vectors, transformed x and/or y vectors or NA,NA
+#'
+#'
+#' @examples
+#' validity(x,y,Wages, Travel)
+#'
+#' @keywords internal
 validity <- function(x,y,x_lab,y_lab){
 
 while(TRUE){

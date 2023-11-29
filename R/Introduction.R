@@ -1,6 +1,16 @@
 #This function helps user decide if their data is appropriate for simple linear regression
 #If appropriate will return location of data
 
+#' intro
+#'
+#'This function helps user to determine if their data is appropriate for simple linear regression
+#'
+#' @return path to users data
+#'
+#' @examples
+#' intro()
+#'
+#' @keywords internal
 intro = function(){
   cat("We will be modeling the relationship between two variables with simple
     linear regression as well as exploring the strength of correlation.
