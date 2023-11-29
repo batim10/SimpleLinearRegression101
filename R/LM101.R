@@ -1,10 +1,6 @@
-#Provide user with information regarding linear modeling
+#Function integrating the interactive functions in this package allowing the
+#User to easily navigate performing simple linear regression
 
-#Source files containing necessary functions
-
-#path for my dataset is "C:\Users\batim\OneDrive\Documents\STAT608\TextbookResources\Data\Data\my_airlines.txt"
-#"C:\Users\batim\OneDrive\Documents\STAT608\TextbookResources\Data\Data\myAdRevenue.xlsx"
-#Name rnorm data, then y can be that times 2 plus 5
 
 
 SLR101 <- function(){
