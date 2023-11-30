@@ -13,8 +13,9 @@
 #' @return pdf containing plots and outcomes of shapiro wilks test
 #'
 #' @examples
+#' \dontrun{
 #' Visual(x,y,Wages, Travel)
-#'
+#' }
 #' @keywords internal
 Visual <- function(x, y, x_lab, y_lab, p = 19,c = "blue"){
 
