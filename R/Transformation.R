@@ -13,7 +13,9 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' transformation(x,y,x_lab,l_lab)
+#' }
 #'
 #' @keywords internal
 transformation <- function(x,y,x_lab,y_lab){
