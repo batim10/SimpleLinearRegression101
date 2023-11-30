@@ -9,7 +9,9 @@
 #' @return estimated coefficients using simple linear regression
 #'
 #' @examples
+#' \dontrun{
 #' boot_betas(data,idx)
+#'   }
 #'
 #' @keywords internal
 boot_betas <- function(data,idx){
