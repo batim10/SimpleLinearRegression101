@@ -14,7 +14,9 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #' validity(x,y,Wages, Travel)
+#' }
 #'
 #' @keywords internal
 validity <- function(x,y,x_lab,y_lab){
