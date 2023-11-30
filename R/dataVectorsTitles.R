@@ -7,7 +7,9 @@
 #' @return list containing predictor and response variables and their column titles
 #'
 #' @examples
+#' \dontrun{
 #' xyVectors(table)
+#'}
 #'
 #' @keywords internal
 xyVectors <- function(table){
