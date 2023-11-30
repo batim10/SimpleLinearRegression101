@@ -8,7 +8,9 @@
 #' @return path to users data
 #'
 #' @examples
+#' \dontrun{
 #' intro()
+#'}
 #'
 #' @keywords internal
 intro = function(){
@@ -72,7 +74,7 @@ while(TRUE){
         if (tolower(response3) == "n"){
         stop("Format your data appropriately then start over")
         }else if (tolower(response3) == "y"){
-          response4 = readline(prompt ="Enter path to the location of your data file.")
+          response4 = readline(prompt ="Enter path to the location of your data file without quotation marks.")
           return(response4)
           break
         }else{
