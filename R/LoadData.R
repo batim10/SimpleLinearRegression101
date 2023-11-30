@@ -6,7 +6,9 @@
 #' @return table with loaded user data
 #'
 #' @examples
+#' \dontrun{
 #' Load("C:\user\file.txt")
+#' }
 #'
 #' @keywords internal
 Load = function(loc){
