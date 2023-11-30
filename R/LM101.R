@@ -49,7 +49,6 @@ SLR101 <- function(){
   #Calculating  correlation coefficient for variables
   step5 <- Correlation(x,y,x_lab,y_lab)
 
-  print(step5)
 
   #Use simple linear regression to create model
   step6 <- SimpleLinear(x,y)
@@ -83,7 +82,8 @@ SLR101 <- function(){
 
     cat("
           As you require bootstrapping to calculate Confidence intervals for your
-          response variable, we will also use bootstrapping to calculate your coefficients \n")
+          response variable, we will also use bootstrapping to calculate your coefficients \n"
+        )
 
     #Number of bootstrap samples
     B <- 1000
@@ -91,6 +91,20 @@ SLR101 <- function(){
     #Arrange vectors in dataframe
     boot_df <- data.frame(x_lab = x, y_lab= y)
     colnames(boot_df) <- c(x_lab,y_lab)
+
+    #Create predicted response for use in boot function based on user provided predictor variable
+    yhat <- function(data,indices){
+      boot_x <- data[,1]
+
+      boot_y <- data[,2]
+
+      boot_model <- lm(boot_y[indices]~ boot_x[indices])
+
+      boot_coef <- coef(boot_model)
+
+      sum(boot_coef*c(1,as.numeric(userResponse)))
+
+    }
 
 
     #Predicted value of Y based on linear model; will create B bootstraps of this value
@@ -110,11 +124,11 @@ SLR101 <- function(){
 
   cat("
         The Confidence Interval for your response variable given your predictor
-        variable is:",boot_int[4,],boot_int[5,],"\n")
+        variable is:",boot_int[4],boot_int[5],"\n")
 
   cat("Your predicted response given predictor variable is:",boot_y,"\n")
 
-  cat("Your estimated model coefficients are:",boot_coef[1],boot_coef[2],"\n")
+  cat("Your estimated model coefficients are:",(boot_coef$t0)[1],(boot_coef$t0)[2],"\n")
 
  }else{
     stop("Your data as it is cannot be modeled using simple linear regression")
