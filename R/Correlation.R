@@ -11,7 +11,9 @@
 #' @return Pearson or Spearman's correlation constant with p values
 #'
 #' @examples
+#' \dontrun{
 #' Correlation(x,y,Wages,Travel)
+#' }
 #'
 #' @keywords internal
 Correlation <- function(x,y, x_lab,y_lab){
