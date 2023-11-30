@@ -14,5 +14,6 @@ If a valid model is created, or is appropriate for construction of a bootstrappe
 
 This will be helpful to new users of R who aren't familiar with the language but would like to create a simple linear model
 
-**You can install the development version**
+**You can install the development version with the following**
+
 devtools::install_github("batim10/SimpleLinearRegression101")
