@@ -9,7 +9,9 @@
 #' @return summary of linear model
 #'
 #' @examples
+#' \dontrun{
 #' SimpleLinear(x,y)
+#' }
 #'
 #' @keywords internal
 SimpleLinear <- function(x,y){
