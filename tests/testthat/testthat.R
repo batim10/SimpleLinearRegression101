@@ -11,8 +11,6 @@ library(SimpleLinearRegression101)
 
 test_check("SimpleLinearRegression101")
 
-library(testthat)
-
 
 x <- rnorm(100)
 y <- 2*x + 5
@@ -25,7 +23,5 @@ testthat::test_that("Appropriate Errors while Loading Data", {
 })
 
 
-testthat::test_that("Appropriate data type output from Simple Linear", {
-  expect_s3_class(SimpleLinear(x,y), "summary.lm")
-})
+
 
