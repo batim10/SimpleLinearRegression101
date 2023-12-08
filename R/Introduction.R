@@ -47,7 +47,8 @@ intro = function(){
     Examples: Height, weight,time \n"
           )
 while(TRUE){
-  response = readline(prompt = "Is your response variable continuous? Answer Y or N: ")
+  cat("Is your response variable continuous? Answer Y or N: ")
+  response = readline(prompt = "")
 
   if(tolower(response) %in% c("y","n")){
     if (tolower(response) == "n"){
@@ -55,8 +56,8 @@ while(TRUE){
 
 
     }else{
-    response2 = readline(prompt = "Is your explanatory variable binary or continuous? ")
-
+    cat("Is your explanatory variable binary or continuous? ")
+    response2 = readline(prompt = "")
       if (tolower(response2) == "n"){
       stop("Simple linear regression is not a suitable method to model your data.")
       }else if (tolower(response2) %in% c("y","n")){
@@ -74,7 +75,8 @@ while(TRUE){
         if (tolower(response3) == "n"){
         stop("Format your data appropriately then start over")
         }else if (tolower(response3) == "y"){
-          response4 = readline(prompt ="Enter path to the location of your data file without quotation marks.")
+          cat("Enter path to the location of your data file without quotation marks.")
+          response4 = readline(prompt ="")
           return(response4)
           break
         }else{
